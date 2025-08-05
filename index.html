@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Curso BlatoRH Group - Reporte de Incidentes de Seguridad</title>
+    <title>Curso BlatoRH Group - Reporte de Incidentes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -111,8 +111,8 @@
         .diploma-text { font-family: 'Merriweather', serif; }
         .diploma-seal {
             position: absolute;
-            bottom: 3.5rem;
-            right: 2.5rem;
+            bottom: 2rem; /* MODIFICADO */
+            right: 2rem;  /* MODIFICADO */
             width: 100px;
             height: 100px;
             background: radial-gradient(ellipse at center, #d4af37 0%,#b48811 100%);
@@ -175,14 +175,14 @@
                     <div class="login-promo hidden lg:flex flex-col justify-center items-start p-12">
                          <img src="https://raw.githubusercontent.com/BLHTR/CursoSeguridad/main/blatorh.png" alt="BlatoRH Logo" class="h-16 w-auto mb-8" onerror="this.src='https://placehold.co/200x64/FFFFFF/0a192f?text=BlatoRH'; this.onerror=null;">
                         <h1 id="login-course-title" class="text-5xl font-bold text-white leading-tight mt-4"></h1>
-                        <p class="text-slate-300 mt-4 text-lg">La seguridad de la información es una prioridad. Este curso te guiará sobre cómo y cuándo reportar un incidente de seguridad.</p>
+                        <p class="text-slate-300 mt-4 text-lg">La seguridad y el manejo adecuado de la información son cruciales para nuestro éxito. Este curso te guiará a través de nuestras políticas y mejores prácticas.</p>
                     </div>
                     <div class="flex flex-col justify-center items-center p-8 bg-slate-900/50">
                         <div class="w-full max-w-md">
                              <div class="text-center lg:hidden mb-8">
                                 <h2 class="text-3xl md:text-4xl font-bold text-white">BlatoRH Group</h2>
                                 <p id="login-course-title-mobile" class="mt-2 text-slate-300"></p>
-                            </div>
+                             </div>
                             <p class="text-center text-slate-300 mb-2">Ingresa tus datos para comenzar.</p>
                             <div class="text-center mb-6">
                                 <div class="inline-flex items-center bg-slate-800/50 px-3 py-1.5 rounded-full text-sm">
@@ -250,8 +250,8 @@
                  <p class="text-xl mb-8" id="result-message"></p>
                  <div id="result-summary" class="space-y-2 text-left max-w-md mx-auto mb-8"></div>
                  <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <button id="restart-quiz-btn" class="btn btn-secondary">Reintentar</button>
-                    <button id="diploma-btn" class="btn btn-primary hidden">Ver Diploma</button>
+                     <button id="restart-quiz-btn" class="btn btn-secondary">Reintentar</button>
+                     <button id="diploma-btn" class="btn btn-primary hidden">Ver Diploma</button>
                  </div>
             </div>
 
@@ -309,29 +309,39 @@
         const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpheHlva2Vqdnd1cHdtYmhlbnNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTI4NzMwNDYsImV4cCI6MjA2ODQ0OTA0Nn0.boNwgjYadjo6deO_YfKbLCGt0ug4H012D2KuhX0WZB8';
         const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
         
-        const COURSE_TITLE = "Procedimiento para el Reporte de Incidentes de Seguridad en Blatorh Group";
-        const RESOURCE_PDF_URL = 'https://raw.githubusercontent.com/BLHTR/CursoSeguridad/main/Procedimiento%20para%20el%20Reporte%20de%20Incidentes%20de%20Seguridad.pdf';
+        const COURSE_TITLE = "Procedimiento para el Reporte de Incidentes de Seguridad";
+        const RESOURCE_PDF_URL = 'https://raw.githubusercontent.com/BLHTR/CursoSeguridad/main/Manejo%20e%20Intercambio%20de%20Informaci%C3%B3n%20para%20Consultores%20(1).pdf';
 
         // --- DATOS DEL CURSO ---
         const chapters = [
-            { title: "Identificación del Incidente", content: `<p><strong>Definición de Incidente:</strong> Un incidente de seguridad se refiere a cualquier evento que comprometa la confidencialidad, integridad o disponibilidad de la información, ya sea por acceso no autorizado, pérdida de datos, fuga de información o cualquier otra amenaza.</p><p class="mt-4"><strong>Tipos de Incidentes Comunes:</strong></p><ul class="list-disc list-inside ml-4 space-y-2"><li><strong>Fuga de datos:</strong> Información confidencial compartida o accesible por personas no autorizadas.</li><li><strong>Acceso no autorizado:</strong> Ingreso a sistemas o información sin los permisos adecuados.</li><li><strong>Malware o ataques:</strong> Infecciones de software malicioso que afecten la seguridad de los sistemas.</li></ul>` },
-            { title: "Notificación Inmediata", content: `<p><strong>Responsabilidad de Notificación:</strong> El consultor que detecte el incidente debe notificarlo inmediatamente a su supervisor directo y al equipo de seguridad de la información de Blatorh Group.</p><p class="mt-4"><strong>Canales de Notificación:</strong></p><ul class="list-disc list-inside ml-4 space-y-2"><li><strong>Correo electrónico:</strong> Enviar un correo al equipo de seguridad con el asunto "Reporte de Incidente de Seguridad".</li><li><strong>Teléfono o mensajería interna:</strong> Usar medios de comunicación internos para una notificación rápida.</li></ul>` },
-            { title: "Documentación del Incidente", content: `<p><strong>Información Requerida:</strong> Al documentar un incidente, es crucial incluir la siguiente información:</p><ul class="list-disc list-inside ml-4 space-y-2"><li><strong>Descripción:</strong> Explicar lo sucedido, cómo se detectó y su impacto inicial.</li><li><strong>Fecha y hora:</strong> Registrar cuándo se detectó y notificó el incidente.</li><li><strong>Sistemas afectados:</strong> Detallar qué sistemas o datos se vieron comprometidos.</li><li><strong>Acciones tomadas:</strong> Describir las acciones inmediatas para mitigar el impacto.</li></ul>` },
-            { title: "Evaluación Inicial", content: `<p><strong>Responsabilidad:</strong> El equipo de seguridad de la información realizará una evaluación inicial para determinar la gravedad y el alcance del daño.</p><p class="mt-4"><strong>Criterios de Evaluación:</strong></p><ul class="list-disc list-inside ml-4 space-y-2"><li><strong>Gravedad:</strong> Determinar si el incidente es menor, moderado o crítico.</li><li><strong>Alcance:</strong> Identificar cuántos sistemas, datos o personas se ven afectados.</li><li><strong>Impacto:</strong> Evaluar el impacto potencial en la operación de Blatorh Group y sus clientes.</li></ul>` },
-            { title: "Respuesta y Mitigación", content: `<p><strong>Medidas de Contención:</strong> El equipo de seguridad implementará medidas para contener el incidente y evitar que se propague.</p><ul class="list-disc list-inside ml-4 space-y-2"><li><strong>Desconectar sistemas comprometidos:</strong> Aislar sistemas que hayan sido afectados.</li><li><strong>Restablecimiento de contraseñas:</strong> Forzar el cambio de contraseñas de cuentas afectadas.</li><li><strong>Monitoreo:</strong> Iniciar un monitoreo constante para detectar actividades sospechosas.</li></ul>` },
-            { title: "Comunicación Interna y Externa", content: `<p><strong>Informe Interno:</strong> Preparar un informe para los líderes de Blatorh Group detallando el incidente y las acciones tomadas.</p><p class="mt-4"><strong>Notificación a Clientes:</strong> Si el incidente afecta a clientes, se les notificará de manera oportuna, proporcionando detalles relevantes y las acciones que se están tomando.</p><p class="mt-4"><strong>Confidencialidad:</strong> Asegurar que toda comunicación respete las políticas de confidencialidad y no revele más información de la necesaria.</p>` },
-            { title: "Recuperación y Restauración", content: `<p><strong>Restauración de Sistemas:</strong> Una vez contenido el incidente, proceder a restaurar los sistemas y datos a su estado normal.</p><p class="mt-4"><strong>Revisión de Backups:</strong> Verificar la integridad de los backups y restaurar desde una copia segura si es necesario.</p><p class="mt-4"><strong>Validación:</strong> Asegurar que todos los sistemas vuelvan a estar operativos y sin vulnerabilidades remanentes.</p>` },
-            { title: "Análisis Post-Incidente", content: `<p><strong>Revisión y Análisis:</strong> El equipo de seguridad debe realizar una revisión completa para entender las causas raíz y cómo prevenir incidentes futuros.</p><p class="mt-4"><strong>Lecciones Aprendidas:</strong> Documentar las lecciones para mejorar los procedimientos y políticas.</p><p class="mt-4"><strong>Actualización de Políticas:</strong> Basado en el análisis, actualizar las políticas de seguridad para prevenir incidentes similares.</p>` },
-            { title: "Reporte Final y Archivo", content: `<p><strong>Elaboración de Reporte Final:</strong> Crear un reporte final que incluya todos los detalles del incidente, desde su detección hasta la resolución y las lecciones aprendidas.</p><p class="mt-4"><strong>Archivo Seguro:</strong> Guardar el reporte en un lugar seguro y accesible para futuras referencias y auditorías.</p>` },
-            { title: "Formación y Mejora Continua", content: `<p><strong>Capacitación:</strong> Realizar sesiones de formación con los consultores y empleados para asegurar que todos estén al tanto del procedimiento de reporte de incidentes y cómo deben actuar.</p><p class="mt-4"><strong>Simulacros de Incidentes:</strong> Llevar a cabo simulacros periódicos para evaluar la preparación del equipo y mejorar la respuesta a incidentes reales.</p>` }
+            { 
+                title: "Identificación de un Incidente de Seguridad", 
+                content: `<p><strong>Definición de Incidente:</strong> Un incidente de seguridad es cualquier evento que pone en riesgo la confidencialidad, integridad o disponibilidad de la información. Esto incluye accesos no autorizados, pérdida de datos o fugas de información.</p><p class="mt-4"><strong>Tipos Comunes de Incidentes:</strong></p><ul class="list-disc list-inside ml-4 space-y-2"><li><strong>Fuga de datos:</strong> Información confidencial expuesta a personas no autorizadas.</li><li><strong>Acceso no autorizado:</strong> Ingreso a sistemas o datos sin los permisos correspondientes.</li><li><strong>Malware o ataques:</strong> Infecciones de software malicioso que comprometen la seguridad.</li></ul>` 
+            },
+            { 
+                title: "Notificación Inmediata del Incidente", 
+                content: `<p><strong>Responsabilidad de Notificar:</strong> Si detectas un incidente, es tu responsabilidad notificarlo inmediatamente a tu supervisor directo y al equipo de seguridad de la información.</p><p class="mt-4"><strong>Canales de Notificación:</strong></p><ul class="list-disc list-inside ml-4 space-y-2"><li><strong>Correo electrónico:</strong> Envía un email al equipo de seguridad con el asunto "Reporte de Incidente de Seguridad".</li><li><strong>Mensajería interna:</strong> Usa los canales rápidos como teléfono o mensajería para asegurar una notificación veloz.</li></ul>` 
+            },
+            { 
+                title: "Documentación y Evaluación del Incidente", 
+                content: `<p><strong>Información Requerida:</strong> Al reportar, debes incluir:</p><ul class="list-disc list-inside ml-4 space-y-2"><li>Descripción detallada de lo sucedido.</li><li>Fecha y hora exactas de la detección.</li><li>Sistemas o información que fueron afectados.</li><li>Cualquier acción inmediata que hayas tomado para mitigar el daño.</li></ul><p class="mt-4"><strong>Evaluación Inicial:</strong> El equipo de seguridad evaluará la gravedad, el alcance y el impacto potencial del incidente en Blatorh Group y sus clientes.</p>` 
+            },
+            { 
+                title: "Respuesta, Mitigación y Comunicación", 
+                content: `<p><strong>Medidas de Contención:</strong> El equipo de seguridad actuará rápidamente para contener el incidente. Esto puede incluir:</p><ul class="list-disc list-inside ml-4 space-y-2"><li>Desconectar sistemas comprometidos.</li><li>Restablecer contraseñas de cuentas afectadas.</li><li>Monitorear la actividad sospechosa.</li></ul><p class="mt-4"><strong>Comunicación:</strong> Se preparará un informe interno. Si el incidente afecta a los clientes, se les notificará de manera oportuna y confidencial.</p>` 
+            },
+            { 
+                title: "Recuperación y Análisis Post-Incidente", 
+                content: `<p><strong>Restauración de Sistemas:</strong> Una vez contenido, los sistemas y datos se restaurarán a su estado normal, verificando la integridad de los backups.</p><p class="mt-4"><strong>Análisis y Lecciones Aprendidas:</strong> Se realizará una revisión completa para entender la causa raíz y documentar las lecciones aprendidas, con el fin de mejorar los procedimientos y políticas de seguridad.</p>` 
+            }
         ];
 
         const quizQuestions = [
-            { question: "¿Cuál es el primer paso que debe tomar un consultor al detectar un incidente de seguridad?", options: ["Intentar solucionarlo por su cuenta", "Notificar inmediatamente a su supervisor y al equipo de seguridad", "Documentar el incidente detalladamente antes de notificar", "Informar directamente al cliente afectado"], answer: 1 },
-            { question: "¿Cuál de los siguientes datos NO es obligatorio al documentar un incidente?", options: ["Fecha y hora de la detección", "Sistemas o información afectados", "La opinión personal sobre la causa del incidente", "Descripción de las acciones inmediatas tomadas"], answer: 2 },
-            { question: "¿Quién es el principal responsable de realizar la evaluación inicial de un incidente?", options: ["El consultor que lo reportó", "El equipo de seguridad de la información", "El director del proyecto", "El departamento de Recursos Humanos"], answer: 1 },
-            { question: "Si un incidente de seguridad afecta a un cliente, ¿cuál es el procedimiento correcto?", options: ["Esperar a que el incidente esté completamente resuelto para notificar", "No notificar para evitar alarmar al cliente", "Notificar de manera oportuna con detalles relevantes y acciones de mitigación", "Dejar que el cliente descubra el incidente por su cuenta"], answer: 2 },
-            { question: "¿Cuál es el objetivo principal del análisis post-incidente?", options: ["Asignar culpas y responsabilidades", "Entender las causas raíz para prevenir futuros incidentes", "Calcular el impacto financiero exacto del incidente", "Archivar el reporte final para cumplir con la auditoría"], answer: 1 }
+            { question: "Ante la detección de un incidente de seguridad, ¿cuál es la primera acción que debe realizar un consultor?", options: ["Intentar solucionarlo por su cuenta", "Notificar inmediatamente a su supervisor y al equipo de seguridad", "Esperar a recopilar toda la evidencia antes de informar", "Apagar su equipo y desconectarse de la red"], answer: 1 },
+            { question: "¿Quién es el principal responsable de realizar la evaluación inicial para determinar la gravedad de un incidente?", options: ["El consultor que lo detectó", "El director de la compañía", "El equipo de seguridad de la información", "El cliente afectado"], answer: 2 },
+            { question: "¿Cuál de los siguientes datos NO es estrictamente necesario en la documentación inicial del incidente?", options: ["Fecha y hora de la detección", "Una propuesta de solución a largo plazo", "Descripción de lo sucedido", "Sistemas o información afectados"], answer: 1 },
+            { question: "¿En qué caso se debe notificar a los clientes sobre un incidente de seguridad?", options: ["En todos los casos, sin excepción", "Nunca, para no generar alarma", "Solo si el incidente los afecta directamente", "Únicamente si los medios de comunicación se enteran"], answer: 2 },
+            { question: "¿Cuál es el propósito principal del análisis post-incidente?", options: ["Asignar culpas a los responsables", "Entender las causas raíz para prevenir futuros incidentes y mejorar políticas", "Calcular las pérdidas financieras exactas", "Preparar un caso legal"], answer: 1 }
         ];
         
         // --- ELEMENTOS DEL DOM ---
@@ -625,7 +635,7 @@
                 domElements.diplomaCourseTitle.textContent = `"${COURSE_TITLE}"`;
                 domElements.diplomaParticipantName.textContent = `${state.currentUser.name || ''} ${state.currentUser.surname || ''}`.trim();
                 domElements.diplomaDate.textContent = state.currentUser.completed_date;
-            }
+             }
         }
 
         async function downloadDiploma() {
